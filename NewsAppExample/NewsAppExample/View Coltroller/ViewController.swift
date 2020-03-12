@@ -45,7 +45,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self?.newsTableView.reloadData()
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    switch error {
+                        case .responseError(let desp):
+                            print(desp)
+                    }
                 }
             }
         }
