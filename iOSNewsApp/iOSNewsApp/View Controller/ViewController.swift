@@ -1,8 +1,10 @@
 import UIKit
+import JGProgressHUD
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var newsTableView: UITableView!
+    let hud = JGProgressHUD(style: JGProgressHUDStyle.extraLight)
     
     let apiClient = APIClient()
     var source = [Source]()
@@ -33,13 +35,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func getAllNewsSources() {
-        
+        showHUD()
         apiClient.getNewsSource { [weak self] response in
             switch response {
             case .success(let newsSource):
                 DispatchQueue.main.async {
+                    self?.hideHUD()
                     self?.source = newsSource.sources
                     self?.newsTableView.reloadData()
+                    
                 }
             case .failure(let error):
                 switch error {
@@ -51,9 +55,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(identifier: "NewsArticle" ) as! NewsViewController
-
-        self.navigationController?.pushViewController(vc, animated: true)
+        performSegue(withIdentifier: "newsDetails", sender: indexPath)
+    }
+    
+    private func showHUD(){
+        hud.textLabel.text = "Loading ..."
+        hud.show(in: self.newsTableView)
+    }
+    
+    private func hideHUD(){
+        hud.dismiss()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newsDetails" {
+            if let vc = segue.destination as? NewsViewController {
+                let indexPath = sender as! IndexPath
+                let sc = source[indexPath.row].id
+                vc.source = sc
+            }
+        }
     }
 
 }

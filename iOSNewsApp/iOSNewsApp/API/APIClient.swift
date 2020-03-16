@@ -29,27 +29,14 @@ class APIClient {
         task.resume()
     }
     
-//    func getNews(_ completion: @escaping (Data) -> Void) {
-//        let request = URLRequest(url: newsUrl!)
-//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//            if error != nil || data == nil {
-//                print("Server Error")
-//                return
-//            }
-//
-//            guard let data = data else {
-//                print("Response Error")
-//                return
-//            }
-//            //print(String(data: data, encoding: .utf8)!)
-//            completion(data)
-//        }
-//        task.resume()
-//    }
-    
-    func getNews(_ completion: @escaping (Result<News, CustomError>) -> Void) {
-        
-        let task = URLSession.shared.dataTask(with: newsUrl!) { (data, response, error) in
+    func getNews(source: String, completion: @escaping (Result<News, CustomError>) -> Void) {
+        let str = "https://newsapi.org/v2/top-headlines?sources=\(source)&apiKey=7cc6f9c8dfa44fe993467007ada10a9e"
+        //print(str)
+        guard let url = URL(string: str) else {
+            completion(.failure(CustomError.responseError(desp: "Invalid URL")))
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let err = error {
                 completion(.failure(CustomError.responseError(desp: err.localizedDescription)))
             }
@@ -66,4 +53,5 @@ class APIClient {
         }
         task.resume()
     }
+    
 }
