@@ -13,6 +13,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         newsTableView.delegate = self
         newsTableView.dataSource = self
         getAllNewsSources()
+        
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.barTintColor = UIColor.black
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
