@@ -30,7 +30,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.newsHeadLineImage.sd_setImage(with: url as URL)
         }
         
-        cell.newsHeadLineImage.layer.cornerRadius = cell.newsHeadLineImage.frame.height / 2
+        //cell.newsHeadLineImage.layer.cornerRadius = cell.newsHeadLineImage.frame.height / 2
         
         cell.topHeadLineLabel.text = news[indexPath.item].title
         cell.newsTimeLabel.text = news[indexPath.item].publishedAt
@@ -68,6 +68,11 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func hideHUD(){
         hud.dismiss()
+    }
+    
+    
+    @IBAction func goBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
