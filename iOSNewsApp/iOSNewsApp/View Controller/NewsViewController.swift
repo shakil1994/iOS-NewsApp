@@ -38,6 +38,10 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "newsDetailsVC", sender: indexPath)
+    }
+    
     func getNewsArticles() {
         showHUD()
         if let source = source {
@@ -75,4 +79,13 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.popViewController(animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newsDetailsVC" {
+            if let vc = segue.destination as? NewsDetailsViewController {
+                let indexPath = sender as! IndexPath
+                let sc = news[indexPath.item]
+                vc.newsDetailsData = sc
+            }
+        }
+    }
 }

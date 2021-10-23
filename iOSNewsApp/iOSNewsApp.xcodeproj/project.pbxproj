@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04D5F85D2724690D00F44214 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D5F85C2724690D00F44214 /* NewsDetailsViewController.swift */; };
 		7B03A5880670224385759D15 /* Pods_iOSNewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D829BC1DD15DD0C0E8F5136E /* Pods_iOSNewsApp.framework */; };
 		7B0F1E2E241DDCB0007970B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F1E2D241DDCB0007970B8 /* AppDelegate.swift */; };
 		7B0F1E30241DDCB0007970B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F1E2F241DDCB0007970B8 /* SceneDelegate.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04D5F85C2724690D00F44214 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
 		7B0F1E2A241DDCB0007970B8 /* iOSNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B0F1E2D241DDCB0007970B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B0F1E2F241DDCB0007970B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				7B0F1E31241DDCB0007970B8 /* ViewController.swift */,
 				7BECCCD1241DEFE30088F2CB /* NewsViewController.swift */,
+				04D5F85C2724690D00F44214 /* NewsDetailsViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D5F85D2724690D00F44214 /* NewsDetailsViewController.swift in Sources */,
 				7B0F1E32241DDCB0007970B8 /* ViewController.swift in Sources */,
 				7B0F1E4D241DDF30007970B8 /* NewsSourceTableViewCell.swift in Sources */,
 				7BECCCCE241DEC5C0088F2CB /* Article.swift in Sources */,
